@@ -66,7 +66,7 @@ for i in range(0,len(RGB)):
 	split = str(x // split_x) + 'x' + str(y // split_y)
 	if not split in splits:
 		splits[split] = np.ones(split_x * split_y, dtype=np.uint16)
-	position = (y % split_y) * split_y + x % split_x
+	position = (y % split_y) * split_x + (x % split_x)
 	splits[split][position] = getRGBA16(RGB[i])
 print("saving converted files...")
 
