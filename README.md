@@ -19,6 +19,6 @@ If you don't want to split the file, leave empty of set to 0x0
 **transparency threshold:**
 Optional.
 
-Value (integer) of the 32 bits png transparency value below which the pixel will be converted to a fully transparent one.
-In 16 RGBA, Red Green Blue and Transparent values are coded respectively with 5 bits, 5 bits, 5 bits and 1 one. Only one bit for transparent means it can only be not transparent at all of fully transparent.
+Value (integer) of the 32 bits png transparency value below which the pixel will be converted to a fully transparent one. Default value is 1 (while for PNG 32 bits it goes from 0 to 255)
+In 16 RGBA, Red Green Blue and Transparent values are coded respectively with 5 bits, 5 bits, 5 bits and 1 one. Only one bit for transparent means it can only be not transparent at all of fully transparent. 
 
