@@ -1,10 +1,10 @@
 # png2n64
 
-#### description
+## description
 simple python script to convert a png file (32 or 24 bits) to a 16 RGBA file usable (for example) in a n64 project.
 a converted file with .551 extension will be created in the same folder
 
-#### usage
+## usage
 ./png2n64.py <file to convert> <split option*> <transparency threshold>
 
 **file to convert:** 
