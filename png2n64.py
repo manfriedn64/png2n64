@@ -8,10 +8,10 @@ def cvt5_round(val):
 #	return int(val) / 8
 	return max(0, min(31, round(val / 8)))
 
-def getRGBA16(RGBA):
+def getRGBA16(RGBA, transparency_threshold):
 	transparency = 1
 	if len(RGBA) > 3:
-		if RGBA[3] < 1:
+		if RGBA[3] < transparency_threshold:
 			transparency = 0
 	out_rgb = (
 		cvt5_round(float(RGBA[0])),
@@ -38,6 +38,11 @@ else:
 	print ("image format needs to be RGB or RGBA (current: ",img.mode,")")
 	sys.exit()
 
+# default values
+split_x = img.size[0]
+split_y = img.size[1]
+transparency_threshold = 1
+# check if any arguement change the default values
 if len(sys.argv) > 2:
 	if sys.argv[2] == '32x32':
 		split_x = 32
@@ -48,12 +53,14 @@ if len(sys.argv) > 2:
 	elif sys.argv[2] == '64x32':
 		split_x = 64
 		split_y = 32
+	elif sys.argv[2] == '0x0':
+		split_x = img.size[0]
+		split_y = img.size[1]
 	else:
 		print('possibles split values: 32x32 64x32 32x64')
 		sys.exit()
-else:
-	split_x = img.size[0]
-	split_y = img.size[1]
+	if len(sys.argv) > 3 and isistance(sys.argv[3], int):
+		transparency_threshold = int(sys.argv[3])
 
 print("processing...")
 if img.size[0] % split_x != 0 or img.size[1] % split_y != 0:
@@ -67,7 +74,7 @@ for i in range(0,len(RGB)):
 	if not split in splits:
 		splits[split] = np.ones(split_x * split_y, dtype=np.uint16)
 	position = (y % split_y) * split_x + (x % split_x)
-	splits[split][position] = getRGBA16(RGB[i])
+	splits[split][position] = getRGBA16(RGB[i], transparency_threshold)
 print("saving converted files...")
 
 segments = []
