@@ -5,7 +5,7 @@ simple python script to convert a png file (32 or 24 bits) to a 16 RGBA file usa
 a converted file with .551 extension will be created in the same folder
 
 ## usage
-./png2n64.py **file to convert** **_split option_** **_transparency threshold_**
+./png2n64.py _file to convert_ _split option_ _transparency threshold_
 
 **file to convert:** 
 Absolute or relative path to the png file to convert
