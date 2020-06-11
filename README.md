@@ -13,7 +13,8 @@ Absolute or relative path to the png file to convert
 **split option:** 
 Optional.
 
-possible values are 32x32, 32x64 and 64x32. If enabled, it will split the output file in as many as needed in order to get parts of the choosen width and height.
+width X height pixels rectangle to split to your file. For example if you to split you file to 32 x 32 pixels squares set it to 32x32. You need to make sure
+that width and height used here can divide your original file width and height.
 If you don't want to split the file, leave empty of set to 0x0
 
 **transparency threshold:**

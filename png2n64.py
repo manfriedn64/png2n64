@@ -43,22 +43,9 @@ split_x = img.size[0]
 split_y = img.size[1]
 transparency_threshold = 1
 # check if any arguement change the default values
-if len(sys.argv) > 2:
-	if sys.argv[2] == '32x32':
-		split_x = 32
-		split_y = 32
-	elif sys.argv[2] == '32x64':
-		split_x = 32
-		split_y = 64
-	elif sys.argv[2] == '64x32':
-		split_x = 64
-		split_y = 32
-	elif sys.argv[2] == '0x0':
-		split_x = img.size[0]
-		split_y = img.size[1]
-	else:
-		print('possibles split values: 32x32 64x32 32x64')
-		sys.exit()
+if len(sys.argv) > 2 and len(sys.argv[2].split('x')) == 2 and sys.argv[2] != '0x0':
+	split_x = int(sys.argv[2].split('x')[0])
+	split_y = int(sys.argv[2].split('x')[1])
 	if len(sys.argv) > 3 and isistance(sys.argv[3], int):
 		transparency_threshold = int(sys.argv[3])
 
